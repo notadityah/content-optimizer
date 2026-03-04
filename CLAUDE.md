@@ -19,7 +19,7 @@ Draw from the career profile intelligently. You have creative freedom to emphasi
 ```
 ./
 ├── career.md                      # Career profile - source of truth
-├── opportunities/                 # Job-specific YAML files
+├── opportunities/                 # Temporary YAML files (deleted after render)
 │
 ├── cli/                           # Python CLI package
 │   ├── schemas/
@@ -36,7 +36,11 @@ Draw from the career profile intelligently. You have creative freedom to emphasi
 │       ├── primary.tex.j2
 │       └── original/
 │
-└── output/                        # Generated PDFs and TEX files
+└── output/                        # Per-job output folders
+    └── <job-name>/                # e.g. aws-data-engineer/
+        ├── job-description.md     # Saved job description
+        ├── resume.pdf             # Final resume
+        └── cover-letter.pdf       # Final cover letter
 ```
 
 ## Content Types
@@ -49,19 +53,21 @@ The kinds of content you will be asked to generate falls into two buckets
 
 The user will specify:
 - Which opportunity file
-- Which entity (resume, cover-letter)
+- Generate both resume and cover letter
 - Which template (defaults to primary)
 
 Your job:
-1. Read: `career.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
-2. Produce: YAML matching the schema → save to `./opportunities/<name>.yaml`
-3. Render: Run CLI command
-4. Validate: Check generated PDF in `./output/`, iterate on `.tex` if needed
+1. **Setup:** Create `./output/<job-name>/` folder. Save the job description as `./output/<job-name>/job-description.md`.
+2. **Read:** `career.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
+3. **Produce:** YAML matching the schema → save to `./opportunities/<name>.yaml`
+4. **Render:** Run CLI command, outputting PDFs to the job folder.
+5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page.
+6. **Clean up:** Delete the temporary YAML files from `./opportunities/` and `.tex` files from `./output/` after successful PDF generation.
 
 ```zsh
 # Render YAML → PDF
-uv run python -m cli render resume <yaml> [-t template] [-o output.pdf]
-uv run python -m cli render cover-letter <yaml> [-t template] [-o output.pdf]
+uv run python -m cli render resume <yaml> [-t template] [-o output/<job-name>/resume.pdf]
+uv run python -m cli render cover-letter <yaml> [-t template] [-o output/<job-name>/cover-letter.pdf]
 
 # Re-compile after manual .tex edits
 uv run python -m cli re-render <tex> [-o output.pdf]
@@ -69,10 +75,15 @@ uv run python -m cli re-render <tex> [-o output.pdf]
 
 Defaults:
 - `-t` defaults to `primary`
-- `-o` defaults to `./output/<input_name>.pdf`
+- `-o` should always target `./output/<job-name>/`
 
 ### Freeform (Text/Markdown)
 
 **Outreach emails, LinkedIn messages, application Q&A, anything else** — strategic content, simple output.
 
 No schema, no CLI. Just produce well-crafted text derived from career.md.
+
+## Writing Style
+
+- Never use em dashes (—). Always use ' - ' (space-hyphen-space) instead.
+- Prioritize points from highest impact to lowest impact. when trimming content, remove the lowest impact points first.
