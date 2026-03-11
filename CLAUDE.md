@@ -52,11 +52,13 @@ The kinds of content you will be asked to generate falls into two buckets
 **Resume, Cover Letter** — requires precise formatting, strict schema.
 
 The user will specify:
+
 - Which opportunity file
 - Generate both resume and cover letter
 - Which template (defaults to primary)
 
 Your job:
+
 1. **Setup:** Create `./output/<job-name>/` folder. Save the job description as `./output/<job-name>/job-description.md`.
 2. **Read:** `career.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
 3. **Produce:** YAML matching the schema → save to `./opportunities/<name>.yaml`
@@ -74,6 +76,7 @@ uv run python -m cli re-render <tex> [-o output.pdf]
 ```
 
 Defaults:
+
 - `-t` defaults to `primary`
 - `-o` should always target `./output/<job-name>/`
 
@@ -86,4 +89,5 @@ No schema, no CLI. Just produce well-crafted text derived from career.md.
 ## Writing Style
 
 - Never use em dashes (—). Always use ' - ' (space-hyphen-space) instead.
-- Prioritize points from highest impact to lowest impact. when trimming content, remove the lowest impact points first.
+- Always use jakegut.tex resume template
+- Prioritize points from highest impact to lowest impact. when trimming content, remove the lowest impact points first. (example of high impact: job experience points. Example of low impact: projects that dont really show what a real job in a prod environment shows)

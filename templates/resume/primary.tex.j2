@@ -86,11 +86,11 @@
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{2pt}\item
+  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
@@ -109,7 +109,7 @@
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
-\renewcommand\labelitemii{$\vcenter{\hbox{$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
@@ -125,7 +125,7 @@
 %----------HEADING----------
 \begin{center}
     \textbf{\Huge \scshape <<basics.name|escape_latex>>} \\ \vspace{1pt}
-    <@ if links and links|length > 0 @>\small <@ for link in links @><@ if not loop.first @> $|$ <@ endif @>\href{<<link.url>>}{<<link.display|escape_latex>>}<@ endfor @><@ endif @>
+    <@ if links and links|length > 0 @>\small <@ for link in links @><@ if not loop.first @> $|$ <@ endif @>\href{<<link.url>>}{\underline{<<link.display|escape_latex>>}}<@ endfor @><@ endif @>
 \end{center}
 
 %-----------SUMMARY-----------
@@ -135,22 +135,17 @@
 <@ if basics.ats_optimization @>\atsKeywords{ <<basics.ats_optimization|escape_latex>>}<@ endif @>
 <@ endif @>
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    <@ for edu in education @>
-    \resumeSubheading
-      {<<edu.institution|escape_latex>>}{<<edu.location|default("", true)|escape_latex>>}
-      {<<edu.degree|escape_latex>>}{<<edu.dates|escape_latex>>}
-      <@ if edu.details @>
-      \resumeItemListStart
-        <@ for detail in edu.details @>
-        \resumeItem{<<detail|escape_latex>>}
-        <@ endfor @>
-      \resumeItemListEnd
-      <@ endif @>
-    <@ endfor @>
-  \resumeSubHeadingListEnd
+%-----------TECHNICAL SKILLS-----------
+<@ if skills and skills|length > 0 @>
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     <@ for category, items in skills.items() @>
+     \textbf{<<category|escape_latex>>}{: <<items|escape_latex>>}<@ if not loop.last @> \\<@ endif @>
+     <@ endfor @>
+    }}
+ \end{itemize}
+<@ endif @>
 
 %-----------EXPERIENCE-----------
 \section{Experience}
@@ -204,17 +199,22 @@
     \resumeSubHeadingListEnd
 <@ endif @>
 
-%-----------TECHNICAL SKILLS-----------
-<@ if skills and skills|length > 0 @>
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     <@ for category, items in skills.items() @>
-     \textbf{<<category|escape_latex>>}{: <<items|escape_latex>>}<@ if not loop.last @> \\<@ endif @>
-     <@ endfor @>
-    }}
- \end{itemize}
-<@ endif @>
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    <@ for edu in education @>
+    \resumeSubheading
+      {<<edu.institution|escape_latex>>}{<<edu.location|default("", true)|escape_latex>>}
+      {<<edu.degree|escape_latex>>}{<<edu.dates|escape_latex>>}
+      <@ if edu.details @>
+      \resumeItemListStart
+        <@ for detail in edu.details @>
+        \resumeItem{<<detail|escape_latex>>}
+        <@ endfor @>
+      \resumeItemListEnd
+      <@ endif @>
+    <@ endfor @>
+  \resumeSubHeadingListEnd
 
 %-------------------------------------------
 \end{document}
