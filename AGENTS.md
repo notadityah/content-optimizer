@@ -4,15 +4,21 @@ This is a toolkit for producing marketing and sales content for personal brandin
 
 ## The career profile
 
-The file `./career.md` (or alternatively at, `./canon.md` or `./identity.md`) contains the comprehensive career profile. This is the "universe of facts" or "a single source of truth" from which all content is derived. In addition to the typical resume content like bio, education, experiences, projects, and skills, it ALSO indludes other details such as interests, passion, philosophy and writing style.
+The file `./career.md` (or alternatively at, `./canon.md` or `./identity.md`) contains the comprehensive career profile. This is the "universe of facts" or "a single source of truth" from which all content is derived. In addition to the typical resume content like bio, education, experiences, projects, and skills, it ALSO includes other details such as interests, passion, philosophy and writing style.
 
-The career profile file is meant to be a lot more detailed than a resume. With at least a page full of in-depth information about every job experience and project. By design, any material you produce must be a curated selection from the career profile - depending on the opportunity.
+The career profile file is meant to be a lot more detailed than a resume. By design, any material you produce must be a curated selection from the career profile - depending on the opportunity.
 
 ## Resume Optimization Philosophy
 
 Generate resumes that appear naturally written while being strategically optimized for both ATS systems and human recruiters. The recruiter should see a strong, well-rounded candidate whose background aligns with the role - not a document obviously tailored to match a job description.
 
-Draw from the career profile intelligently. You have creative freedom to emphasize, reframe, and reasonably extrapolate from the source material. The goal is producing what the candidate would write themselves if they had perfect knowledge of what works, not rigid transcription of facts.
+### Selection & Impact Logic
+
+- **Tag Prioritization:** Use the impact tags in `career.md` to match the job's core needs (e.g., prioritize `[Efficiency]` for automation-heavy roles or `[Scale]` for big data/infrastructure roles).
+- **Project Relevance:** For Data Engineering or Backend roles, prioritize **BirdDex** and the **Pose Estimation REST API**. For Full-Stack or Web Development roles, prioritize **JobDetective** and **Project Demeter**.
+- **Education Placement:** For all 2026 applications, place the Monash University education entry above the Experience section to highlight the recent Australian qualification and immediate availability.
+- **The "Monash Gap" Strategy:** Since the candidate just completed a Master of IT in late 2025, the AI must explicitly frame the 2024 - 2025 period as an intentional career pivot to the Australian market through higher education.
+- **Citizenship:** If the application requires me to have permanent residency or be an australian citizen, just tell me and stop doing anything else.
 
 ## Repository Structure
 
@@ -63,7 +69,7 @@ Your job:
 2. **Read:** `career.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
 3. **Produce:** YAML matching the schema → save to `./opportunities/<name>.yaml`
 4. **Render:** Run CLI command, outputting PDFs to the job folder.
-5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page.
+5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page. Also check that all the points are validated with `career.md` if anything is exaggerated or lies, correct it.
 6. **Clean up:** Delete the temporary YAML files from `./opportunities/` and `.tex` files from `./output/` after successful PDF generation.
 
 ```zsh
@@ -88,6 +94,7 @@ No schema, no CLI. Just produce well-crafted text derived from career.md.
 
 ## Writing Style
 
-- Never use em dashes (—). Always use ' - ' (space-hyphen-space) instead.
-- Always use jakegut.tex resume template
-- Prioritize points from highest impact to lowest impact. when trimming content, remove the lowest impact points first. (example of high impact: job experience points. Example of low impact: projects that dont really show what a real job in a prod environment shows)
+**Pronuciation:** Never use em dashes (—). Always use ' - ' (space-hyphen-space) instead.
+**Voice:** Use strictly active voice (e.g., "Architected," "Engineered," "Spearheaded") instead of passive phrases like "Was responsible for".
+**Localization:** Use Australian English spelling (e.g., "Optimisation", "Modelling", "Analysing") for prose, while maintaining standard US technical terminology (e.g., "SQL Optimization").
+**Hierarchy:** Prioritize points from highest impact to lowest impact. When trimming for space, remove the lowest impact "Additional Projects" first.

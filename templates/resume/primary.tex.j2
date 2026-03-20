@@ -131,9 +131,25 @@
 %-----------SUMMARY-----------
 <@ if summary @>
 \section{Summary}
-<<summary|escape_latex>>
-<@ if basics.ats_optimization @>\atsKeywords{ <<basics.ats_optimization|escape_latex>>}<@ endif @>
+<<summary|trim|escape_latex>><@ if basics.ats_optimization @>\atsKeywords{ <<basics.ats_optimization|escape_latex>>}<@ endif @>
 <@ endif @>
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    <@ for edu in education @>
+    \resumeSubheading
+      {<<edu.institution|escape_latex>>}{<<edu.location|default("", true)|escape_latex>>}
+      {<<edu.degree|escape_latex>>}{<<edu.dates|escape_latex>>}
+      <@ if edu.details @>
+      \resumeItemListStart
+        <@ for detail in edu.details @>
+        \resumeItem{<<detail|escape_latex>>}
+        <@ endfor @>
+      \resumeItemListEnd
+      <@ endif @>
+    <@ endfor @>
+  \resumeSubHeadingListEnd
 
 %-----------TECHNICAL SKILLS-----------
 <@ if skills and skills|length > 0 @>
@@ -198,23 +214,6 @@
       <@ endfor @>
     \resumeSubHeadingListEnd
 <@ endif @>
-
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    <@ for edu in education @>
-    \resumeSubheading
-      {<<edu.institution|escape_latex>>}{<<edu.location|default("", true)|escape_latex>>}
-      {<<edu.degree|escape_latex>>}{<<edu.dates|escape_latex>>}
-      <@ if edu.details @>
-      \resumeItemListStart
-        <@ for detail in edu.details @>
-        \resumeItem{<<detail|escape_latex>>}
-        <@ endfor @>
-      \resumeItemListEnd
-      <@ endif @>
-    <@ endfor @>
-  \resumeSubHeadingListEnd
 
 %-------------------------------------------
 \end{document}

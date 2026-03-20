@@ -12,6 +12,7 @@ __pycache__/
 
 # Output (generated PDFs and tex)
 output/
+applied/
 
 # Career profile (personal data)
 career.md
