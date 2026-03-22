@@ -15,7 +15,7 @@ Generate resumes that appear naturally written while being strategically optimiz
 ### Selection & Impact Logic
 
 - **Tag Prioritization:** Use the impact tags in `career.md` to match the job's core needs (e.g., prioritize `[Efficiency]` for automation-heavy roles or `[Scale]` for big data/infrastructure roles).
-- **Project Relevance:** For Data Engineering or Backend roles, prioritize **BirdDex** and the **Pose Estimation REST API**. For Full-Stack or Web Development roles, prioritize **JobDetective** and **Project Demeter**.
+- **Project Relevance:** For Data Engineering or Backend roles, prioritize **BirdDex** and the **Pose Estimation REST API**. For Full-Stack or Web Development roles, prioritize **JobDetective** and **Project Demeter**. For AI/GenAI roles, prioritize **BirdDex**, **JobDetective**, and the **Pose Estimation REST API** - in that order. **JobDetective** is preferred over **Project Demeter** in all contexts due to its more complex, deliberate design (AI-assisted analysis pipeline, cloud deployment, analytics integration).
 - **Education Placement:** For all 2026 applications, place the Monash University education entry above the Experience section to highlight the recent Australian qualification and immediate availability.
 - **The "Monash Gap" Strategy:** Since the candidate just completed a Master of IT in late 2025, the AI must explicitly frame the 2024 - 2025 period as an intentional career pivot to the Australian market through higher education.
 - **Citizenship:** If the application requires me to have permanent residency or be an australian citizen, just tell me and stop doing anything else.
