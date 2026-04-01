@@ -21,6 +21,7 @@ identity.md
 
 # Opportunities, targets, job-specific content
 opportunities/
-
+.cursor
+.agents
 .vscode
 .DS_store
