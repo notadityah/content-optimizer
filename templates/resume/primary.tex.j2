@@ -125,7 +125,7 @@
 %----------HEADING----------
 \begin{center}
     \textbf{\Huge \scshape <<basics.name|escape_latex>>} \\ \vspace{1pt}
-    <@ if links and links|length > 0 @>\small <@ for link in links @><@ if not loop.first @> $|$ <@ endif @>\href{<<link.url>>}{\underline{<<link.display|escape_latex>>}}<@ endfor @><@ endif @>
+    <@ if links and links|length > 0 @>\small <@ for link in links @><@ if not loop.first @> $|$ <@ endif @><@ if link.url @>\href{<<link.url>>}{\underline{<<link.display|escape_latex>>}}<@ else @><<link.display|escape_latex>><@ endif @><@ endfor @><@ endif @>
 \end{center}
 
 %-----------SUMMARY-----------

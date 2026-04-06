@@ -9,7 +9,7 @@ class Basics(BaseModel):
 
 
 class Link(BaseModel):
-    url     : str
+    url     : str | None = None
     display : str
 
 
