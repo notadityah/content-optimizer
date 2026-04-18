@@ -22,6 +22,8 @@ identity.md
 # Opportunities, targets, job-specific content
 opportunities/
 .cursor
+.claude
+.gemini
 .agents
 .vscode
 .DS_store
