@@ -60,6 +60,7 @@
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
+\setlength{\emergencystretch}{2em}
 
 % Sections formatting
 \titleformat{\section}{
@@ -102,9 +103,9 @@
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabularx}{0.97\textwidth}{@{}>{\raggedright\arraybackslash}X r@{}}
       \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabularx}\vspace{-7pt}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
