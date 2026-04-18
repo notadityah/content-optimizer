@@ -94,8 +94,6 @@ Your job:
      - `Company`: extracted from the job description
      - `Role`: the job title
      - `Status`: `"Prepared"` — NOT "Applied". The user applies manually; do not assume they have applied.
-     - `Resume Version`: `file:///Users/hariharan.aditya/Documents/Claude/content-optimizer/output/<job-name>/<resume-filename>.pdf`
-     - `Job Description`: `file:///Users/hariharan.aditya/Documents/Claude/content-optimizer/output/<job-name>/job-description.md`
    - Do NOT set `Date Applied` or `Gmail Thread ID` at this stage — those are only set when the user confirms they have applied (see "Mark as Applied" below).
    - If the application requires Australian citizenship or permanent residency and the user is not eligible, skip this step and notify the user instead (as per the Citizenship rule above).
 
