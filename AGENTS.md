@@ -31,11 +31,21 @@ The summary is a strict distillation of `career.md`. It is not a pitch. It is no
 - **No High Distinctions List:** Do not include a "High Distinctions" line in the Education section. Only list WAM/GPA and Relevant Units.
 - **Citizenship:** If the application requires me to have permanent residency or be an australian citizen, just tell me and stop doing anything else.
 
+### Transferable Skills Framing
+
+When a JD names a tool or technology that does not appear in `career.md`, consult `./skills-map.md` to find the concepts that bridge it to tools I have actually used. Reframe relevant bullets to lead with the concept rather than the specific vendor tool I worked with.
+
+- **Strict rule:** Tools I have not used must NEVER appear in the rendered resume or cover letter - not in bullets, not in the Technical Skills section, not in the summary. The "Adjacent tools" lists in `skills-map.md` exist solely for JD keyword matching and phrasing decisions. They are never copied into output.
+- **Concept-lead phrasing:** When the JD asks for an adjacent tool, lead the bullet with the concept ("Engineered dimensional data models and optimised OLAP calculation views for banking analytics..."), then name the specific tool I used ("...on SAP BW/HANA") at the end. Do not drop my real tool entirely and do not substitute the JD's tool in its place.
+- **Preserve scope flags:** If `skills-map.md` notes a tool as "academic project only" or "capstone" or "planned, not built", that flag travels with the reframing. Kubernetes bullets keep the resource-constrained academic framing. RAG is roadmap familiarity, not shipped experience.
+- **Pre-render check:** Before deleting the `.tex` file, grep it for every tool or technology named in the JD. Any name that appears in the JD but does NOT appear in `career.md` must not be present in the `.tex`. If one is found, remove it and re-render.
+
 ## Repository Structure
 
 ```
 ./
 ├── career.md                      # Career profile - source of truth
+├── skills-map.md                  # Concept layer: tool -> concepts, adjacent-tool bridges
 ├── opportunities/                 # Temporary YAML files (deleted after render)
 │
 ├── cli/                           # Python CLI package
@@ -82,7 +92,7 @@ Before doing substantive work on a structured opportunity, **create a todo list*
 Your job:
 
 1. **Setup:** Create `./output/<job-name>/` folder. Save the job description as `./output/<job-name>/job-description.md`.
-2. **Read:** `career.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
+2. **Read:** `career.md` + `skills-map.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
 3. **Produce:** YAML matching each schema → save to `./opportunities/`. Use a dedicated file per entity (for example `./opportunities/<job-name>.yaml` for the resume and `./opportunities/<job-name>-cover.yaml` for the cover letter), since resume and cover letter schemas differ.
 4. **Render:** Run the CLI for **both** entities, writing `resume.pdf` and `cover-letter.pdf` into `./output/<job-name>/`.
 5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page. Also check that all the points are validated with `career.md` if anything is exaggerated or lies, correct it.

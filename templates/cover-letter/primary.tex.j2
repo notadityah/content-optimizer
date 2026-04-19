@@ -70,12 +70,24 @@
 <@ endif @>
 
 %----------BODY----------
-<<body|escape_latex>>
+<# Split on blank lines so each paragraph becomes a real LaTeX \par (parskip applies). #>
+<@ if body @>
+<@ for paragraph in body.strip().split('\n\n') @>
+<@ if paragraph.strip() @>
+<<paragraph.strip()|escape_latex>>
+
+<@ endif @>
+<@ endfor @>
+<@ endif @>
 
 <@ if closing @>
 \vspace{12pt}
+<@ for paragraph in closing.strip().split('\n\n') @>
+<@ if paragraph.strip() @>
+<<paragraph.strip()|escape_latex>>
 
-<<closing|escape_latex>>
+<@ endif @>
+<@ endfor @>
 <@ endif @>
 
 \end{document}

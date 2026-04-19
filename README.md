@@ -65,6 +65,8 @@ _(If using pip instead of uv: same commands, just drop the `uv run` prefix)_
 
 You create opportunity-specific YAML files that select and frame content from your career profile. Templates render these to LaTeX, compile to PDF.
 
+A companion file, `skills-map.md`, holds the concept layer on top of `career.md` - which real tools map to which underlying concepts, and which adjacent tools can be matched by reframing bullets without claiming skills you don't have.
+
 - **Content changes?** Edit the YAML, re-render.
 - **Formatting tweaks?** Edit the generated `.tex` file, recompile.
 - **Want to customize templates?** They're in `templates/`.
