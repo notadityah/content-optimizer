@@ -44,7 +44,7 @@ MIN_VISIBLE_CHAR_COUNT = 2400
 # PDF-level thresholds
 # Calibrated against output/master-resume/resume.pdf which measured 0.943
 # fill ratio and 2964 extracted chars (a known well-filled reference).
-MIN_PAGE_FILL_RATIO = 0.80   # text must reach at least 80% down the page
+MIN_PAGE_FILL_RATIO = 0.93   # minimum floor; aim for 95%+ in practice
 MIN_PDF_EXTRACTED_CHARS = 2400
 
 
