@@ -29,6 +29,7 @@ The summary is a strict distillation of `career.md`. It is not a pitch. It is no
 - **Education Placement:** For all 2026 applications, place the Monash University education entry above the Experience section to highlight the recent Australian qualification and immediate availability.
 - **Relevant Units:** Do not list all Monash units in the resume. Select only the 2-3 most relevant to the target role (e.g., Cloud Computing and Security + Advanced Database Technology + Data Wrangling for data engineering). Unit codes (FITxxxx) should be omitted from the resume.
 - **No High Distinctions List:** Do not include a "High Distinctions" line in the Education section. Only list WAM/GPA and Relevant Units.
+- **Azure Certification:** For roles that require or strongly prefer Azure, always include **Microsoft Certified: Azure Data Engineer Associate (DP-203)** in the resume certifications section. This certification may also support Azure keyword relevance in the summary or skills only when the wording stays faithful to `career.md`.
 - **Citizenship:** If the application requires me to have permanent residency or be an australian citizen, just tell me and stop doing anything else.
 
 ### Transferable Skills Framing
@@ -38,6 +39,7 @@ When a JD names a tool or technology that does not appear in `career.md`, consul
 - **Strict rule:** Tools I have not used must NEVER appear in the rendered resume or cover letter - not in bullets, not in the Technical Skills section, not in the summary. The "Adjacent tools" lists in `skills-map.md` exist solely for JD keyword matching and phrasing decisions. They are never copied into output.
 - **Concept-lead phrasing:** When the JD asks for an adjacent tool, lead the bullet with the concept ("Engineered dimensional data models and optimised OLAP calculation views for banking analytics..."), then name the specific tool I used ("...on SAP BW/HANA") at the end. Do not drop my real tool entirely and do not substitute the JD's tool in its place.
 - **Preserve scope flags:** If `skills-map.md` notes a tool as "academic project only" or "capstone" or "planned, not built", that flag travels with the reframing. Kubernetes bullets keep the resource-constrained academic framing. RAG is roadmap familiarity, not shipped experience.
+- **Azure framing:** The DP-203 certification is a completed certification and should be included for Azure-relevant roles, but it does not convert adjacent Azure services into hands-on production experience unless `career.md` explicitly says so. For Azure JDs, pair the certification with honest concept-led experience from AWS, SAP BW/HANA, SQL, data pipelines, and database work.
 - **Pre-render check:** Before deleting the `.tex` file, grep it for every tool or technology named in the JD. Any name that appears in the JD but does NOT appear in `career.md` must not be present in the `.tex`. If one is found, remove it and re-render.
 
 ## Repository Structure
@@ -87,7 +89,7 @@ The user will specify:
 
 ### Mandatory: todo list (agents)
 
-Before doing substantive work on a structured opportunity, **create a todo list** (for example Cursor's todo tool) that covers **every** step in this section through cleanup and Notion. Typical items: setup folder + `job-description.md`; read `career.md`, schemas, and templates; write resume YAML; write cover letter YAML; render resume PDF; render cover letter PDF; validate resume is exactly one page; sanity-check cover letter length; cross-check claims against `career.md`; delete temporary YAML under `./opportunities/` and `.tex` under `./output/<job-name>/`; log to Notion (unless ineligible). **Update the list as you go** so no step is skipped - cover letters are easy to forget if only the resume YAML exists.
+Before doing substantive work on a structured opportunity, **create a todo list** (for example Cursor's todo tool) that covers **every** step in this section through cleanup and Notion. Typical items: setup folder + `job-description.md`; read `career.md`, schemas, and templates; write resume YAML; write cover letter YAML; render resume PDF; render cover letter PDF; validate resume is exactly one page; run the resume density check and iterate until it passes; sanity-check cover letter length; cross-check claims against `career.md`; delete temporary YAML under `./opportunities/` and `.tex` under `./output/<job-name>/`; log to Notion (unless ineligible). **Update the list as you go** so no step is skipped - cover letters are easy to forget if only the resume YAML exists.
 
 Your job:
 
@@ -95,7 +97,7 @@ Your job:
 2. **Read:** `career.md` + `skills-map.md` + opportunity + `./cli/schemas/<entity>.py` + `./templates/<entity>/<template>.tex.j2`
 3. **Produce:** YAML matching each schema → save to `./opportunities/`. Use a dedicated file per entity (for example `./opportunities/<job-name>.yaml` for the resume and `./opportunities/<job-name>-cover.yaml` for the cover letter), since resume and cover letter schemas differ.
 4. **Render:** Run the CLI for **both** entities, writing `resume.pdf` and `cover-letter.pdf` into `./output/<job-name>/`.
-5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page. Also check that all the points are validated with `career.md` if anything is exaggerated or lies, correct it.
+5. **Validate (resume only):** Check that the resume PDF is exactly **one page**. If it exceeds one page, iterate by removing the least relevant content and re-rendering until it fits on a single page. After every successful one-page render, run the density check with `uv run python cli/evals/density_check.py ./opportunities/<job-name>.yaml --pdf ./output/<job-name>/resume.pdf`. If the density check fails, restore or add the most relevant verified content and re-render until the resume is both exactly one page and density-check passing. Also check that all the points are validated with `career.md` if anything is exaggerated or lies, correct it.
 6. **Clean up:** After **both** PDFs are generated successfully, delete the temporary YAML file(s) you created under `./opportunities/` for that job and the `.tex` file(s) under `./output/<job-name>/`.
 
 7. **Log to Notion:** After **both** PDFs are generated successfully, create an entry in the Job Applications Notion database.
@@ -120,6 +122,9 @@ Your job:
 # Render YAML → PDF
 uv run python -m cli render resume <yaml> [-t template] [-o output/<job-name>/resume.pdf]
 uv run python -m cli render cover-letter <yaml> [-t template] [-o output/<job-name>/cover-letter.pdf]
+
+# Validate resume density after render
+uv run python cli/evals/density_check.py <resume-yaml> --pdf output/<job-name>/resume.pdf
 
 # Re-compile after manual .tex edits
 uv run python -m cli re-render <tex> [-o output.pdf]

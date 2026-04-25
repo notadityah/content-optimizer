@@ -69,7 +69,7 @@
 - **Evidence in career.md:** L24, L25, L38 (containerised Lambda for ML), L79 (Lambda + Hono + Neon), L80 (ONNX Runtime on containerised Lambda), L81 (CDK stack: HTTP API Gateway v2, Lambda, S3, CloudFront), L82 (cold start tradeoff), L85 (presigned S3, CloudFront, migrations on deploy), L93 (Lambda + RDS on JobDetective).
 - **Scope:** multiple production personal projects + academic work.
 - **Adjacent tools:** GCP (Cloud Functions, Cloud Run, GKE, BigQuery, Cloud Storage), Azure (Functions, App Service, Blob Storage, Cosmos DB); Terraform, Pulumi, Serverless Framework (different IaC tools; CDK is what's used); Cloudflare Workers (edge compute - not used); DynamoDB (not used - flag careful, was in careerv0 but removed from v2).
-- **Framing guidance:** For GCP/Azure JDs, lead with "serverless architecture", "infrastructure-as-code", "REST API design", "CDN-backed static delivery". For Terraform/Pulumi JDs, lead with "infrastructure-as-code" and note AWS CDK specifically at the end.
+- **Framing guidance:** For GCP/Azure JDs, lead with "serverless architecture", "infrastructure-as-code", "REST API design", "CDN-backed static delivery". For Azure JDs, always include Microsoft Certified: Azure Data Engineer Associate (DP-203) in certifications, while keeping hands-on cloud examples tied to AWS unless `career.md` says otherwise. For Terraform/Pulumi JDs, lead with "infrastructure-as-code" and note AWS CDK specifically at the end.
 
 ### Docker (BirdDex + Pose Estimation + Public Transport local dev)
 - **Concepts exercised:** containerised production workloads (Lambda-targeted); containerisation for academic ML API; local dev containers.
@@ -237,7 +237,7 @@ For JD keywords that name a tool Aditya has NOT used. Lead relevant bullets with
 
 ### Cloud providers (not used in production)
 - **GCP (Cloud Functions, Cloud Run, GKE, Cloud Storage, BigQuery, Pub/Sub)** -> serverless architecture, IaC, REST API design, managed container orchestration, CDN delivery. Source work: AWS (Lambda, API Gateway, S3, CloudFront, CDK).
-- **Azure (Functions, App Service, Blob Storage, Cosmos DB, Synapse, AKS)** -> same concepts. Additionally: Aditya is pursuing DP-203 (Azure Data Engineer Associate, in progress) per L173 - can be mentioned as in-progress certification.
+- **Azure (Functions, App Service, Blob Storage, Cosmos DB, Synapse, AKS)** -> same concepts. Additionally: Aditya holds Microsoft Certified: Azure Data Engineer Associate (DP-203) per `career.md`; include it for Azure-relevant roles. The certification supports Azure relevance, but do not imply hands-on production delivery with Azure services unless that experience appears in `career.md`.
 
 ### IaC (not used - CDK is used)
 - **Terraform, Pulumi, Serverless Framework, CloudFormation (direct), Ansible** -> infrastructure-as-code, stack-level deployments, cost-driven architecture decisions. Source work: AWS CDK (TypeScript).
