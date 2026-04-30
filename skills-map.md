@@ -69,7 +69,7 @@
 - **Evidence in career.md:** L24, L25, L38 (containerised Lambda for ML), L79 (Lambda + Hono + Neon), L80 (ONNX Runtime on containerised Lambda), L81 (CDK stack: HTTP API Gateway v2, Lambda, S3, CloudFront), L82 (cold start tradeoff), L85 (presigned S3, CloudFront, migrations on deploy), L93 (Lambda + RDS on JobDetective).
 - **Scope:** multiple production personal projects + academic work.
 - **Adjacent tools:** GCP (Cloud Functions, Cloud Run, GKE, BigQuery, Cloud Storage), Azure (Functions, App Service, Blob Storage, Cosmos DB); Terraform, Pulumi, Serverless Framework (different IaC tools; CDK is what's used); Cloudflare Workers (edge compute - not used); DynamoDB (not used - flag careful, was in careerv0 but removed from v2).
-- **Framing guidance:** For GCP/Azure JDs, lead with "serverless architecture", "infrastructure-as-code", "REST API design", "CDN-backed static delivery". For Azure JDs, always include Microsoft Certified: Azure Data Engineer Associate (DP-203) in certifications, while keeping hands-on cloud examples tied to AWS unless `career.md` says otherwise. For Terraform/Pulumi JDs, lead with "infrastructure-as-code" and note AWS CDK specifically at the end.
+- **Framing guidance:** For GCP/Azure JDs, lead with "serverless architecture", "infrastructure-as-code", "REST API design", "CDN-backed static delivery", while keeping hands-on cloud examples tied to AWS unless `career.md` says otherwise. Do not include Azure services, Azure certifications, or Azure skills in rendered output unless they appear in `career.md`. For Terraform/Pulumi JDs, lead with "infrastructure-as-code" and note AWS CDK specifically at the end.
 
 ### Docker (BirdDex + Pose Estimation + Public Transport local dev)
 - **Concepts exercised:** containerised production workloads (Lambda-targeted); containerisation for academic ML API; local dev containers.
@@ -92,12 +92,12 @@
 - **Adjacent tools:** React (Next.js, Remix, Vite-React), Svelte / SvelteKit, Angular, Solid, Nuxt - all component-based SPA frameworks.
 - **Framing guidance:** For React/Angular/Svelte JDs, lead with "full-stack web development", "responsive frontend", "component-based UI" and name Vue 3 at the technology qualifier position. Do not claim React experience.
 
-### FastAPI / Hono (Pose Estimation API + BirdDex)
-- **Concepts exercised:** RESTful API design; type-safe API development; lightweight serverless-compatible backend frameworks.
-- **Evidence in career.md:** L24, L79, L110.
+### FastAPI / Hono / Postman (Pose Estimation API + BirdDex + JobDetective)
+- **Concepts exercised:** RESTful API design; type-safe API development; lightweight serverless-compatible backend frameworks; API endpoint testing; request/response validation across authentication, upload, submission, analysis, report, admin, and dashboard flows.
+- **Evidence in career.md:** L24, BirdDex API Testing bullet, JobDetective API Testing bullet, Pose Estimation REST API section.
 - **Scope:** one academic API + one production personal project.
-- **Adjacent tools:** Flask, Django, Express, NestJS, Koa, Fastify, Elysia, Bun HTTP, Gin (Go), Spring Boot (Java).
-- **Framing guidance:** Lead with "REST API design" for unfamiliar framework JDs.
+- **Adjacent tools:** Flask, Django, Express, NestJS, Koa, Fastify, Elysia, Bun HTTP, Gin (Go), Spring Boot (Java); Insomnia, Bruno, Hoppscotch, Swagger UI / OpenAPI testing tools.
+- **Framing guidance:** Lead with "REST API design" or "API endpoint testing" for unfamiliar framework/API-testing JDs. Name Postman directly when API testing, QA, backend validation, request/response debugging, or integration testing is relevant.
 
 ### Firebase (Firestore, Auth) + better-auth + OAuth + Resend + SendGrid
 - **Concepts exercised:** authentication flows (email/password, Google OAuth, email verification, password reset); transactional and bulk email; Firestore data modelling with custom security rules and indexing.
@@ -180,7 +180,7 @@ When a JD keyword matches one of these concepts, pull bullets from the cited lin
 - **Container orchestration / K8s (academic, resource-constrained):** L38, L112, L113.
 - **Presigned S3 upload flows / CDN distribution:** L85.
 - **Cost-driven architecture decisions / cold start tradeoff:** L81, L82.
-- **REST API design:** L79, L93, L108, L112.
+- **REST API design / API endpoint testing:** L79, BirdDex API Testing bullet, L93, JobDetective API Testing bullet, L108, L112.
 - **Full-stack web development (Vue 3):** L79, L83, L93, L102.
 - **Authentication flows (OAuth, email verification, password reset):** L84, L133.
 - **Transactional / bulk email:** L84, L105.
@@ -237,7 +237,7 @@ For JD keywords that name a tool Aditya has NOT used. Lead relevant bullets with
 
 ### Cloud providers (not used in production)
 - **GCP (Cloud Functions, Cloud Run, GKE, Cloud Storage, BigQuery, Pub/Sub)** -> serverless architecture, IaC, REST API design, managed container orchestration, CDN delivery. Source work: AWS (Lambda, API Gateway, S3, CloudFront, CDK).
-- **Azure (Functions, App Service, Blob Storage, Cosmos DB, Synapse, AKS)** -> same concepts. Additionally: Aditya holds Microsoft Certified: Azure Data Engineer Associate (DP-203) per `career.md`; include it for Azure-relevant roles. The certification supports Azure relevance, but do not imply hands-on production delivery with Azure services unless that experience appears in `career.md`.
+- **Azure (Functions, App Service, Blob Storage, Cosmos DB, Synapse, AKS)** -> same concepts. Azure services are adjacent only; do not include them in rendered output unless that experience appears in `career.md`.
 
 ### IaC (not used - CDK is used)
 - **Terraform, Pulumi, Serverless Framework, CloudFormation (direct), Ansible** -> infrastructure-as-code, stack-level deployments, cost-driven architecture decisions. Source work: AWS CDK (TypeScript).

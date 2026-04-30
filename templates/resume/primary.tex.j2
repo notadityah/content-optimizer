@@ -73,13 +73,6 @@
 %-------------------------
 % Custom commands
 
-% ATS-optimized invisible text using PDF rendering mode 3 (zero dimensions)
-\newcommand{\atsKeywords}[1]{%
-  \ifx\relax#1\relax\else% Only if argument is not empty
-    \smash{\makebox[0pt]{\pdfliteral page{q 3 Tr}#1\pdfliteral page{Q}}}%
-  \fi%
-}
-
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1 \vspace{-2pt}}
@@ -132,7 +125,7 @@
 %-----------SUMMARY-----------
 <@ if summary @>
 \section{Summary}
-<<summary|trim|escape_latex>><@ if basics.ats_optimization @>\atsKeywords{ <<basics.ats_optimization|escape_latex>>}<@ endif @>
+<<summary|trim|escape_latex>>
 <@ endif @>
 
 %-----------EDUCATION-----------
